@@ -3,6 +3,85 @@
  */
 
 
+function resetGame() {
+	const cards = document.getElementsByClassName('card');
+	const moveElement = document.getElementsByClassName('moves');
+	for (let c of cards) {
+		c.classList.remove('match');
+	}
+	moves = 0
+	moveElement[0].innerText = moves;
+}
+
+
+
+clickedCards = []
+moves = 0
+
+var refresh = document.getElementsByClassName('fa-repeat');
+
+refresh[0].addEventListener('click', function() { 
+	resetGame();
+});
+
+function clickHandler() {
+
+	const deck = document.querySelector(".deck");
+
+	deck.addEventListener('click', function (e) {
+	  	const target = e.target
+	  	
+	  	if (target.classList.contains('card')) {
+	    	target.classList.add('show');
+	    	target.classList.add('open'); 
+
+	    	matches = document.getElementsByClassName('match');
+
+	  //   	if(matches.length==16) {
+			// 	alert("Congratulations!");
+			// }
+
+	    	if (!clickedCards.includes(target)) {
+	    		clickedCards.push(target);
+	    		moves = moves + 1;
+	    		const moveElement = document.getElementsByClassName('moves');
+	    		moveElement[0].innerText = moves;
+	    	}
+
+			if (matches.length < 16 ) {
+				if(clickedCards.length == 2) {
+
+					if(clickedCards[0].children[0].classList[1]==clickedCards[1].children[0].classList[1]) {
+						clickedCards[0].classList.add('match');
+						clickedCards[1].classList.add('match');
+						clickedCards[0].classList.remove('show', 'open');
+						clickedCards[1].classList.remove('show', 'open');
+						clickedCards = []
+						// matches = document.getElementsByClassName('match');
+
+				    	function congratulate() {
+				    		if(matches.length==16) {
+								alert("Congratulations!");
+							}
+						}
+						setTimeout(congratulate, 500);
+					} else {
+							function flipCards() { 
+								console.log(clickedCards);
+								clickedCards[0].classList.remove('open','show');
+								clickedCards[1].classList.remove('open','show');
+								clickedCards = []
+						}
+						setTimeout(flipCards, 500)
+					}
+				}
+				console.log(matches.length);
+
+			}
+		}
+	});
+}
+clickHandler();
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -12,7 +91,7 @@
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
