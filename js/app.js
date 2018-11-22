@@ -1,7 +1,18 @@
 /*
  * Create a list that holds all of your cards
  */
+function shuffleDeckHTML() {
 
+	var faList = [];
+	for (var i=0; i<document.getElementsByClassName('card').length; i++) {
+		faList.push(document.getElementsByClassName('card')[i].innerHTML);
+	}
+	shuffle(faList);
+
+	for (var i=0; i<document.getElementsByClassName('card').length; i++) {
+		document.getElementsByClassName('card')[i].innerHTML=faList[i];
+	}
+}
 
 function resetGame() {
 	const cards = document.getElementsByClassName('card');
@@ -22,6 +33,7 @@ var refresh = document.getElementsByClassName('fa-repeat');
 
 refresh[0].addEventListener('click', function() { 
 	resetGame();
+	shuffleDeckHTML();
 });
 
 function clickHandler() {
