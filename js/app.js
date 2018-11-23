@@ -74,6 +74,8 @@ function clickHandler() {
 				    	function congratulate() {
 				    		if(matches.length==16) {
 								alert("Congratulations!");
+								resetGame();
+								shuffleDeckHTML();
 							}
 						}
 						setTimeout(congratulate, 500);
