@@ -43,7 +43,9 @@ function clickHandler() {
 	deck.addEventListener('click', function (e) {
 	  	const target = e.target
 	  	
-	  	if (target.classList.contains('card')) {
+	  	let flippedCards = document.getElementsByClassName('show','open');
+
+	  	if (target.classList.contains('card') && flippedCards.length < 2 ) {
 	    	target.classList.add('show');
 	    	target.classList.add('open'); 
 
@@ -95,7 +97,9 @@ function clickHandler() {
 		}
 	});
 }
+
 clickHandler();
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
