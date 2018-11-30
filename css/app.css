@@ -107,3 +107,53 @@ h1 {
     float: right;
     cursor: pointer;
 }
+.modal__background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.438);
+}
+.modal__body{
+    position: relative;
+    /*height: 50%;*/
+    width: 50%;
+    top: 10%;
+    left: 10%;
+    background: #fff;
+    transform: translate(30%, 70%);
+}
+.modal__heading{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 1.5rem;
+    border: 1.5px solid #aaa;
+}
+.modalexit{
+    font-weight: bold;
+    font-size: 1rem;
+    
+}
+.modalend{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    border: 1px solid #aaa;
+}
+.modalbuttons{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+.modalbutton{
+    width: 45%;
+    height: 45%;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.hide{
+    display: none;
+}
