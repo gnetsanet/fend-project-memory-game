@@ -3,13 +3,13 @@
  */
 function shuffleDeckHTML() {
 
-	var faList = [];
-	for (var i=0; i<document.getElementsByClassName('card').length; i++) {
+	const faList = [];
+	for (let i=0; i<document.getElementsByClassName('card').length; i++) {
 		faList.push(document.getElementsByClassName('card')[i].innerHTML);
 	}
 	shuffle(faList);
 
-	for (var i=0; i<document.getElementsByClassName('card').length; i++) {
+	for (let i=0; i<document.getElementsByClassName('card').length; i++) {
 		document.getElementsByClassName('card')[i].innerHTML=faList[i];
 	}
 }
@@ -24,17 +24,37 @@ function resetGame() {
 	moveElement[0].innerText = moves;
 }
 
+function togglemodal(){
+	const modal = document.querySelector('.modal__background');
+	modal.classList.toggle('hide');
+}
+
+function updateTime() { 
+	timer++;
+	document.querySelector('.timer').innerHTML = `Time ${timer}` ;
+								
+}
+
+togglemodal();
+
+shuffleDeckHTML();
 
 
 clickedCards = []
 moves = 0
 
-var refresh = document.getElementsByClassName('fa-repeat');
+let refresh = document.getElementsByClassName('fa-repeat');
 
 refresh[0].addEventListener('click', function() { 
 	resetGame();
 	shuffleDeckHTML();
 });
+// setting a global variable for Timer 
+let timer = 0;
+
+let clickCounter = 0;
+
+let startTimer;
 
 function clickHandler() {
 
@@ -42,6 +62,10 @@ function clickHandler() {
 
 	deck.addEventListener('click', function (e) {
 	  	const target = e.target
+
+	  	clickCounter++;
+
+	  	if(clickCounter==1) { startTimer = setInterval( updateTime, 1000);}
 	  	
 	  	let flippedCards = document.getElementsByClassName('show','open');
 
@@ -75,7 +99,13 @@ function clickHandler() {
 
 				    	function congratulate() {
 				    		if(matches.length==16) {
-								alert("Congratulations!");
+								//alert("Congratulations!");
+								clearInterval(startTimer);
+								const a = document.querySelector('.modalmoves');
+								a.innerHTML = `Moves - ${moves}`;
+								const b = document.querySelector('.modaltime');
+								b.innerHTML = `Time - ${timer}`
+								togglemodal();
 								resetGame();
 								shuffleDeckHTML();
 							}
@@ -121,8 +151,6 @@ function shuffle(array) {
 
     return array;
 }
-
-
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
