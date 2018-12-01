@@ -2,6 +2,18 @@
  * Create a list that holds all of your cards
  */
 
+function ratePlayer(moves) {
+	if(moves===24) {
+		// document.getElementsByClassName('fa-star')[2].style.display='none';
+		document.getElementsByClassName('fa-star')[2].classList.add('fa-star-o');
+	} else if(moves===32) {
+		// document.getElementsByClassName('fa-star')[1].style.display='none';
+		document.getElementsByClassName('fa-star')[1].classList.add('fa-star-o');
+	} else if(moves===40){
+		document.getElementsByClassName('fa-star')[0].classList.add('fa-star-o');
+	}
+}
+
 function formatTimer(seconds) {
 	
 	if(seconds<10) {
@@ -103,6 +115,7 @@ function clickHandler() {
 	    		moves = moves + 1;
 	    		const moveElement = document.getElementsByClassName('moves');
 	    		moveElement[0].innerText = moves;
+	    		ratePlayer(moves);
 	    	}
 
 			if (matches.length < 16 ) {
