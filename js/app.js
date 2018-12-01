@@ -57,6 +57,10 @@ function resetGame() {
 	document.querySelector('.timer').innerHTML = formatTimer(0);
 	clickCounter = 0;
 	timer = 0;
+	const stars = document.getElementsByClassName('fa-star-o');
+	for(let i of stars){
+		i.classList.remove('fa-star-o');
+	}
 }
 
 function togglemodal(){
