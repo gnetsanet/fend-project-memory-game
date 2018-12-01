@@ -1,6 +1,25 @@
 /*
  * Create a list that holds all of your cards
  */
+
+function formatTimer(seconds) {
+	
+	if(seconds<10) {
+		return `Time - 0:0${seconds}`
+	}
+	else if(seconds<=60) {
+		return `Time - 0:${seconds}`
+	}
+	else {
+		overAminute = seconds%60;
+		if(overAminute < 10) {
+			return `Time - ${Math.floor(seconds/60)}:0${overAminute}`;
+		} else {
+			return `Time - ${Math.floor(seconds/60)}:${overAminute}`;
+		}
+	}
+}
+
 function shuffleDeckHTML() {
 
 	const faList = [];
@@ -31,8 +50,8 @@ function togglemodal(){
 
 function updateTime() { 
 	timer++;
-	document.querySelector('.timer').innerHTML = `Time ${timer}` ;
-								
+	// document.querySelector('.timer').innerHTML = `Time ${timer}` ;
+	document.querySelector('.timer').innerHTML = formatTimer(timer);
 }
 
 togglemodal();
@@ -104,7 +123,8 @@ function clickHandler() {
 								const a = document.querySelector('.modalmoves');
 								a.innerHTML = `Moves - ${moves}`;
 								const b = document.querySelector('.modaltime');
-								b.innerHTML = `Time - ${timer}`
+								// b.innerHTML = `Time - ${timer}`
+								b.innerHTML = formatTimer(timer);
 								togglemodal();
 								resetGame();
 								shuffleDeckHTML();
