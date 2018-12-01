@@ -53,6 +53,10 @@ function resetGame() {
 	}
 	moves = 0
 	moveElement[0].innerText = moves;
+	clearInterval(startTimer);
+	document.querySelector('.timer').innerHTML = formatTimer(0);
+	clickCounter = 0;
+	timer = 0;
 }
 
 function togglemodal(){
