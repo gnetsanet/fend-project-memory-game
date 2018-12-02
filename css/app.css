@@ -107,6 +107,7 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
 .modal__background{
     position: absolute;
     top: 0;
@@ -115,6 +116,7 @@ h1 {
     width: 100%;
     background: rgba(0,0,0,0.438);
 }
+
 .modal__body{
     position: relative;
     /*height: 50%;*/
@@ -124,6 +126,7 @@ h1 {
     background: #fff;
     transform: translate(30%, 70%);
 }
+
 .modal__heading{
     display: flex;
     justify-content: space-evenly;
@@ -131,6 +134,7 @@ h1 {
     padding: 0 1.5rem;
     border: 1.5px solid #aaa;
 }
+
 .modalexit{
     font-weight: bold;
     font-size: 1rem;
@@ -143,17 +147,25 @@ h1 {
     padding: 0.5rem;
     border: 1px solid #aaa;
 }
+
 .modalbuttons{
     display: flex;
     justify-content: space-between;
     padding: 0.5rem;
 }
+
 .modalbutton{
     width: 45%;
     height: 45%;
     font-weight: bold;
     font-size: 1rem;
 }
+
+span.modalstars {
+    list-style: none;
+    display: flex;
+}
+
 .hide{
     display: none;
 }
