@@ -1,6 +1,10 @@
 /*
  * Create a list that holds all of your cards
  */
+function addStarsToModal(){
+	const star = document.getElementsByClassName('stars')[0].innerHTML
+	document.getElementsByClassName('modalstars')[0].innerHTML = `Stars - ${star}`;
+}
 
 function ratePlayer(moves) {
 	if(moves===24) {
@@ -146,6 +150,7 @@ function clickHandler() {
 								const b = document.querySelector('.modaltime');
 								// b.innerHTML = `Time - ${timer}`
 								b.innerHTML = formatTimer(timer);
+								addStarsToModal();
 								togglemodal();
 								resetGame();
 								shuffleDeckHTML();
