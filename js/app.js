@@ -152,7 +152,6 @@ function clickHandler() {
 								b.innerHTML = formatTimer(timer);
 								addStarsToModal();
 								togglemodal();
-								resetGame();
 								shuffleDeckHTML();
 							}
 						}
