@@ -1,6 +1,24 @@
 /*
  * Create a list that holds all of your cards
  */
+
+function exit() {
+	var exitElements = document.querySelectorAll('.modalexit');
+	exitElements.forEach(function(e) {
+		    e.addEventListener("click",() =>{
+		    	togglemodal();
+		    });
+	});
+}
+
+function replay() {
+	document.querySelector('.modalreplay').addEventListener('click',() => {
+    	resetGame();
+    	togglemodal();
+	}); 
+
+}
+
 function addStarsToModal(){
 	const star = document.getElementsByClassName('stars')[0].innerHTML
 	document.getElementsByClassName('modalstars')[0].innerHTML = `Stars - ${star}`;
@@ -65,6 +83,7 @@ function resetGame() {
 	for(let i of stars){
 		i.classList.remove('fa-star-o');
 	}
+	shuffleDeckHTML();
 }
 
 function togglemodal(){
@@ -78,10 +97,8 @@ function updateTime() {
 	document.querySelector('.timer').innerHTML = formatTimer(timer);
 }
 
+
 togglemodal();
-
-shuffleDeckHTML();
-
 
 clickedCards = []
 moves = 0
@@ -174,7 +191,8 @@ function clickHandler() {
 }
 
 clickHandler();
-
+replay();
+exit();
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
