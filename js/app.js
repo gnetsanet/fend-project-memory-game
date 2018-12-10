@@ -15,6 +15,7 @@ function replay() {
 	document.querySelector('.modalreplay').addEventListener('click',() => {
     	resetGame();
     	togglemodal();
+    	shuffleDeckHTML(); // Shuffle deck if replaying
 	}); 
 
 }
@@ -79,11 +80,12 @@ function resetGame() {
 	document.querySelector('.timer').innerHTML = formatTimer(0);
 	clickCounter = 0;
 	timer = 0;
-	const stars = document.getElementsByClassName('fa-star-o');
+
+	// Reset stars before replaying
+	const stars = document.querySelectorAll('.fa-star-o');
 	for(let i of stars){
 		i.classList.remove('fa-star-o');
 	}
-	shuffleDeckHTML();
 }
 
 function togglemodal(){
