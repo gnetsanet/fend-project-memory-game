@@ -71,9 +71,12 @@ function shuffleDeckHTML() {
 function resetGame() {
 	const cards = document.getElementsByClassName('card');
 	const moveElement = document.getElementsByClassName('moves');
+	
+	//User may choose to reset game after a single click or after flipping a single card
 	for (let c of cards) {
-		c.classList.remove('match');
+		c.classList.remove('match','show', 'open');
 	}
+
 	moves = 0
 	moveElement[0].innerText = moves;
 	clearInterval(startTimer);
